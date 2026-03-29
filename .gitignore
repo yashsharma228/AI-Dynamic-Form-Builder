@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+env/
+
+# Environment variables
+.env
+*.env
+
+# Flask instance folder
+instance/
+
+# Node / frontend
+node_modules/
+frontend/dist/
+
+# OS
+.DS_Store
+Thumbs.db
