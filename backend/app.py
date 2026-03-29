@@ -1,6 +1,7 @@
 """Flask application entrypoint."""
 
 import logging
+import os
 from datetime import UTC, datetime
 
 from flask import Flask, jsonify, request
@@ -23,10 +24,11 @@ def create_app(config_object=Config):
 	register_error_handlers(app)
 	register_request_hooks(app)
 
-    # Allow frontend origin (set CORS_ORIGINS env var in production)
-    import os
-    allowed_origins = os.getenv("CORS_ORIGINS", "http://localhost:5173").split(",")
-    CORS(app, origins=allowed_origins, supports_credentials=True)
+	# Allow frontend origin (set CORS_ORIGINS env var in production)
+	allowed_origins = os.getenv("CORS_ORIGINS", "http://localhost:5173").split(",")
+	CORS(app, origins=allowed_origins, supports_credentials=True)
+
+	@app.route("/health")
 	def health_check():
 		return jsonify({"status": "ok", "timestamp": datetime.now(UTC).isoformat()}), 200
 
