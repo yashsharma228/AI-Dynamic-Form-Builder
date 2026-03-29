@@ -33,6 +33,10 @@ def create_app(config_object=Config):
 	allowed_origins = os.getenv("CORS_ORIGINS", "http://localhost:5173").split(",")
 	CORS(app, origins=allowed_origins, supports_credentials=True)
 
+	@app.route("/")
+	def home():
+		return {"message": "API is running 🚀"}
+
 	@app.route("/health")
 	def health_check():
 		return jsonify({"status": "ok", "timestamp": datetime.now(UTC).isoformat()}), 200
