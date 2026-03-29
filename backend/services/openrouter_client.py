@@ -29,16 +29,16 @@ def generate_form(prompt: str) -> dict:
     Returns:
         API response dict with generated form structure
     """
+    api_key = os.getenv("OPENROUTER_API_KEY")
+    
+    if not api_key:
+        return mock_response()
+    
     try:
-        api_key = os.getenv("OPENROUTER_API_KEY")
         base_url = os.getenv("OPENROUTER_BASE_URL")
         model = os.getenv("OPENROUTER_MODEL", "openai/gpt-4o-mini")
         app_url = os.getenv("OPENROUTER_APP_URL", "http://localhost:5173")
         app_name = os.getenv("OPENROUTER_APP_NAME", "AI Dynamic Form Builder")
-        
-        if not api_key or not base_url:
-            logger.warning("OpenRouter credentials not configured, returning mock response")
-            return mock_response()
         
         response = requests.post(
             f"{base_url}/chat/completions",
