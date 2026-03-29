@@ -4,6 +4,7 @@ import logging
 import os
 from datetime import UTC, datetime
 
+from dotenv import load_dotenv
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 from marshmallow import ValidationError as MarshmallowValidationError
@@ -12,6 +13,10 @@ from config import Config
 from extensions import db
 from routes import ai_bp, forms_bp, responses_bp
 from services.errors import AppError
+
+# Load .env file for local development
+load_dotenv()
+
 
 
 def create_app(config_object=Config):
