@@ -1,5 +1,4 @@
 {
-  "framework": "vite",
-  "buildCommand": "cd frontend && npm install --legacy-peer-deps && npm run build",
+  "buildCommand": "cd frontend && chmod +x node_modules/.bin/vite && npm install && npm run build",
   "outputDirectory": "frontend/dist"
 }
