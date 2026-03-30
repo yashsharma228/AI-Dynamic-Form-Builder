@@ -1,0 +1,11 @@
+# Ignore backend and other non-frontend files for Vercel deployment
+backend/
+backend/node_modules/
+instance/
+.venv/
+.env
+.env.example
+constraints.md
+prompting_rules.md
+README.md
+vercel.json
