@@ -33,6 +33,10 @@ def create_app(config_object=Config):
 	allowed_origins = os.getenv("CORS_ORIGINS", "http://localhost:5173").split(",")
 	CORS(app, origins=allowed_origins, supports_credentials=True)
 
+	# Auto-create tables on startup
+	with app.app_context():
+		db.create_all()
+
 	@app.route("/")
 	def home():
 		return {"message": "API is running 🚀"}
