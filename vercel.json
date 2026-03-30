@@ -1,4 +1,4 @@
-{
+// ...existing code from frontend/vercel.json...{
   "builds": [
     {
       "src": "frontend/package.json",

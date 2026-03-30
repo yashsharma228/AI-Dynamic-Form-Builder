@@ -20,7 +20,8 @@ instance/
 
 # Node / frontend
 node_modules/
-frontend/dist/
+dist/
+package-lock.json
 
 # OS
 .DS_Store
